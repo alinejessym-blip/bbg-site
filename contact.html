@@ -1,0 +1,263 @@
+import React, { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { 
+  Mail, 
+  MessageCircle, 
+  Send,
+  CheckCircle,
+  Globe,
+  Users,
+  Instagram,
+  Sparkles,
+  ArrowRight
+} from "lucide-react";
+
+const contactMethods = [
+  {
+    icon: Mail,
+    title: "Envie um E-mail",
+    description: "Entre em contato para consultas gerais",
+    contact: "contato@bizbridgeglobal.com",
+    color: "from-blue-500 to-blue-600"
+  },
+  {
+    icon: Instagram,
+    title: "Instagram",
+    description: "Siga-nos nas redes sociais",
+    contact: "@bizbridgeglobal",
+    color: "from-pink-500 to-pink-600"
+  }
+];
+
+const faqs = [
+  {
+    question: "Como sei se uma oportunidade é legítima?",
+    answer: "Cada oportunidade em nossa plataforma é minuciosamente verificada por nossa equipe. Verificamos a autenticidade das organizações e os detalhes de cada programa antes de listá-los."
+  },
+  {
+    question: "A BBG é gratuita para usar?",
+    answer: "Sim! A BBG é completamente gratuita para estudantes. Acreditamos em democratizar o acesso a oportunidades globais sem barreiras financeiras."
+  },
+  {
+    question: "Vocês podem me ajudar com minha candidatura?",
+    answer: "Embora não escrevamos candidaturas para você, fornecemos guias abrangentes, dicas e recursos para ajudá-lo a criar candidaturas convincentes."
+  },
+  {
+    question: "Com que frequência novas oportunidades são adicionadas?",
+    answer: "Adicionamos novas oportunidades diariamente! Nossa equipe busca continuamente por novos programas, bolsas e competições de organizações pelo mundo."
+  }
+];
+
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    }, 3000);
+  };
+
+  return (
+    <div className="min-h-screen py-16 purple-rays">
+      {/* Hero Section */}
+      <section className="py-20 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-purple-50 px-6 py-3 rounded-full mb-8 animate-pulse-slow">
+            <Sparkles className="w-5 h-5 text-purple-600" />
+            <span className="text-purple-800 font-semibold">Estamos aqui para ajudar</span>
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-8 text-shadow-light">
+            Entre em{" "}
+            <span className="relative inline-block">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5A3D8E] to-[#9C7BD9]">
+                Contato
+              </span>
+              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#5A3D8E] to-[#9C7BD9] rounded-full animate-pulse-slow"></div>
+            </span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-600 leading-relaxed font-medium">
+            Tem dúvidas? Estamos aqui para ajudá-lo a navegar sua jornada rumo a oportunidades globais.
+          </p>
+        </div>
+      </section>
+
+      {/* Contact Methods */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 max-w-4xl mx-auto">
+            {contactMethods.map((method, index) => (
+              <Card 
+                key={method.title}
+                className="group bg-white/95 backdrop-blur-xl border-2 border-purple-200/50 hover:border-purple-300/70 transition-all duration-500 hover-lift cursor-pointer rounded-2xl"
+              >
+                <CardContent className="p-8 text-center">
+                  <div className={`w-20 h-20 bg-gradient-to-r ${method.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl animate-float`}>
+                    <method.icon className="w-10 h-10 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#5A3D8E] transition-colors duration-300">
+                    {method.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 font-medium">
+                    {method.description}
+                  </p>
+                  <p className="text-[#5A3D8E] font-bold text-lg">
+                    {method.contact}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Contact Form and FAQ */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Contact Form */}
+            <Card className="bg-white/95 backdrop-blur-xl border-2 border-purple-200/50 rounded-2xl shadow-xl">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-3xl font-bold text-gray-900 flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-[#9C7BD9] to-[#5A3D8E] rounded-xl flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-white" />
+                  </div>
+                  Envie uma Mensagem
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {!isSubmitted ? (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-3">
+                        <Label htmlFor="name" className="text-purple-800 font-bold">Nome</Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          className="bg-white/80 border-2 border-purple-200 text-gray-900 placeholder:text-gray-500 focus:bg-white focus:border-[#9C7BD9] rounded-xl py-3 font-medium"
+                          placeholder="Seu nome completo"
+                        />
+                      </div>
+                      <div className="space-y-3">
+                        <Label htmlFor="email" className="text-purple-800 font-bold">E-mail</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                          className="bg-white/80 border-2 border-purple-200 text-gray-900 placeholder:text-gray-500 focus:bg-white focus:border-[#9C7BD9] rounded-xl py-3 font-medium"
+                          placeholder="seu@email.com"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <Label htmlFor="subject" className="text-purple-800 font-bold">Assunto</Label>
+                      <Input
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        required
+                        className="bg-white/80 border-2 border-purple-200 text-gray-900 placeholder:text-gray-500 focus:bg-white focus:border-[#9C7BD9] rounded-xl py-3 font-medium"
+                        placeholder="Como podemos ajudá-lo?"
+                      />
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <Label htmlFor="message" className="text-purple-800 font-bold">Mensagem</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        rows={6}
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                        className="bg-white/80 border-2 border-purple-200 text-gray-900 placeholder:text-gray-500 focus:bg-white focus:border-[#9C7BD9] resize-none rounded-xl font-medium"
+                        placeholder="Conte-nos mais sobre sua pergunta ou como podemos ajudá-lo..."
+                      />
+                    </div>
+                    
+                    <Button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-[#9C7BD9] to-[#5A3D8E] text-white font-bold hover:from-[#896ac4] hover:to-[#4a3278] shadow-xl hover:shadow-2xl transition-all duration-300 py-4 text-lg rounded-xl"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-5 h-5 mr-3 animate-spin rounded-full border-2 border-white/30 border-t-white"></div>
+                          Enviando...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-5 h-5 mr-2" />
+                          Enviar Mensagem
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                ) : (
+                  <div className="text-center py-16">
+                    <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-6 animate-pulse-slow" />
+                    <h3 className="text-3xl font-bold text-gray-900 mb-4">Mensagem Enviada!</h3>
+                    <p className="text-gray-600 text-lg font-medium">
+                      Obrigado por entrar em contato. Retornaremos em até 24 horas.
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* FAQ Section */}
+            <div className="space-y-8">
+              <Card className="bg-gradient-to-br from-white/95 to-purple-50/80 backdrop-blur-xl border-2 border-purple-200/50 rounded-2xl shadow-xl">
+                <CardHeader className="pb-6">
+                  <CardTitle className="text-2xl font-bold text-gray-900 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-r from-[#9C7BD9] to-[#5A3D8E] rounded-xl flex items-center justify-center">
+                      <MessageCircle className="w-5 h-5 text-white" />
+                    </div>
+                    Perguntas Frequentes
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  {faqs.map((faq, index) => (
+                    <div key={index} className="border-b border-purple-200/50 pb-6 last:border-b-0 last:pb-0">
+                      <h4 className="font-bold text-gray-900 mb-3 text-lg">{faq.question}</h4>
+                      <p className="text-gray-600 leading-relaxed font-medium">{faq.answer}</p>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+ 
