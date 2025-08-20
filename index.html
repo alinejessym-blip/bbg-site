@@ -1,0 +1,352 @@
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { createPageUrl } from "@/utils";
+import { 
+  GraduationCap, 
+  Globe, 
+  Award, 
+  Briefcase, 
+  Heart, 
+  Code, 
+  ArrowRight,
+  Users,
+  Target,
+  Zap,
+  CheckCircle,
+  Instagram,
+  ExternalLink,
+  Star,
+  Sparkles
+} from "lucide-react";
+
+const categories = [
+  {
+    icon: GraduationCap,
+    title: "Bolsas de Estudo",
+    description: "Financiamento para sua jornada educacional",
+    color: "from-blue-500 to-blue-600",
+    count: "500+"
+  },
+  {
+    icon: Globe,
+    title: "Programas de Verão",
+    description: "Experiências internacionais",
+    color: "from-green-500 to-green-600",
+    count: "200+"
+  },
+  {
+    icon: Award,
+    title: "Competições",
+    description: "Mostre suas habilidades globalmente",
+    color: "from-purple-500 to-purple-600",
+    count: "150+"
+  },
+  {
+    icon: Briefcase,
+    title: "Estágios",
+    description: "Experiência profissional no exterior",
+    color: "from-orange-500 to-orange-600",
+    count: "300+"
+  },
+  {
+    icon: Heart,
+    title: "Voluntariado",
+    description: "Faça a diferença pelo mundo",
+    color: "from-pink-500 to-pink-600",
+    count: "180+"
+  },
+  {
+    icon: Code,
+    title: "Bootcamps",
+    description: "Desenvolvimento intensivo de habilidades",
+    color: "from-indigo-500 to-indigo-600",
+    count: "80+"
+  }
+];
+
+const steps = [
+  {
+    icon: Target,
+    title: "Descobrir",
+    description: "Navegue por milhares de oportunidades internacionais cuidadosamente curadas e verificadas por nossa equipe especializada"
+  },
+  {
+    icon: Users,  
+    title: "Candidatar",
+    description: "Tenha acesso direto aos portais de inscrição, requisitos detalhados e orientações personalizadas para sua candidatura"
+  },
+  {
+    icon: Zap,
+    title: "Conquistar",
+    description: "Transforme sua carreira com experiências globais que expandem horizontes e criam conexões internacionais duradouras"
+  }
+];
+
+const values = [
+  {
+    icon: CheckCircle,
+    title: "Qualidade Curada",
+    description: "Cada oportunidade é verificada e validada por nossa equipe global de especialistas"
+  },
+  {
+    icon: Globe,
+    title: "Rede Global",
+    description: "Conecte-se com oportunidades de mais de 50 países pelo mundo"
+  },
+  {
+    icon: Users,
+    title: "Suporte ao Sucesso",
+    description: "Orientação para candidaturas e dicas de ex-alunos bem-sucedidos"
+  },
+  {
+    icon: Star,
+    title: "Sempre Gratuito",
+    description: "Sem taxas ocultas. Sua jornada global começa aqui, gratuitamente"
+  }
+];
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen purple-rays">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden py-24 lg:py-32">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-purple-50 px-6 py-3 rounded-full mb-8 animate-pulse-slow">
+              <Sparkles className="w-5 h-5 text-purple-600" />
+              <span className="text-purple-800 font-semibold">Conectando talentos ao mundo</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 mb-8 text-shadow-light leading-tight">
+              Conectando Estudantes a
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#5A3D8E] to-[#9C7BD9] animate-pulse-slow">
+                Oportunidades Globais
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+              Descubra bolsas de estudo, programas de verão, competições, estágios e oportunidades 
+              de voluntariado ao redor do mundo. Sua jornada internacional começa aqui.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Link to={createPageUrl("Opportunities")}>
+                <Button size="lg" className="bg-gradient-to-r from-[#5A3D8E] to-[#9C7BD9] text-white font-bold px-10 py-6 text-xl hover:from-[#4a3278] hover:to-[#896ac4] shadow-2xl hover:shadow-[#5A3D8E]/30 transition-all duration-300 hover:scale-105 rounded-2xl">
+                  Encontre Sua Oportunidade
+                  <ArrowRight className="ml-3 w-6 h-6" />
+                </Button>
+              </Link>
+              <Button variant="outline" size="lg" className="border-2 border-purple-300 text-purple-700 hover:bg-purple-50 px-10 py-6 text-xl font-semibold rounded-2xl hover:scale-105 transition-all duration-300">
+                Saiba Mais
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="py-24 relative">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-8">
+              Explore as{" "}
+              <span className="relative inline-block">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5A3D8E] to-[#9C7BD9]">
+                  Oportunidades
+                </span>
+                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#5A3D8E] to-[#9C7BD9] rounded-full animate-pulse-slow"></div>
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
+              De bolsas de estudo a estágios, encontre a oportunidade perfeita para avançar sua carreira
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+            {categories.map((category, index) => (
+              <div
+                key={category.title}
+                className="group cursor-pointer hover-lift"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="gradient-border p-6 text-center h-full">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg animate-float`}>
+                    <category.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-[#5A3D8E] transition-colors duration-300">
+                    {category.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                    {category.description}
+                  </p>
+                  <span className="text-[#5A3D8E] font-bold text-lg">
+                    {category.count}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-purple-100/30"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-8">
+              Como <span className="text-gradient">Funciona</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
+              Três passos estratégicos para desbloquear seu potencial global e transformar sua carreira
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {steps.map((step, index) => (
+              <div key={step.title} className="text-center group hover-lift">
+                <div className="relative mb-8">
+                  <div className="w-24 h-24 bg-gradient-to-r from-[#9C7BD9] to-[#5A3D8E] rounded-full flex items-center justify-center mx-auto shadow-2xl group-hover:scale-110 transition-all duration-300 animate-float">
+                    <step.icon className="w-12 h-12 text-white" />
+                  </div>
+                  <div className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-r from-[#5A3D8E] to-[#9C7BD9] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    {index + 1}
+                  </div>
+                </div>
+                <h3 className="text-3xl font-bold text-gray-900 mb-6 group-hover:text-[#5A3D8E] transition-colors duration-300">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 text-lg leading-relaxed font-medium max-w-sm mx-auto">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Instagram Section */}
+      <section className="py-24 relative">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-white/95 to-purple-50/80 backdrop-blur-xl border-2 border-purple-200/50 rounded-3xl p-12 hover-lift">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="text-center lg:text-left">
+                <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-8 mx-auto lg:mx-0 animate-float">
+                  <Instagram className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-4xl font-bold text-gray-900 mb-6">
+                  Siga-nos no Instagram
+                </h3>
+                <p className="text-xl text-gray-600 mb-8 leading-relaxed font-medium">
+                  Acompanhe histórias inspiradoras, dicas de candidaturas e as últimas oportunidades globais no nosso perfil
+                </p>
+                <div className="mb-8">
+                  <span className="text-3xl font-bold text-gradient">@bizbridgeglobal</span>
+                </div>
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold px-10 py-6 text-xl hover:from-purple-700 hover:to-pink-700 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-2xl"
+                  onClick={() => window.open('https://instagram.com/bizbridgeglobal', '_blank')}
+                >
+                  <Instagram className="mr-3 w-6 h-6" />
+                  Seguir Agora
+                  <ExternalLink className="ml-3 w-5 h-5" />
+                </Button>
+              </div>
+              
+              <div className="flex justify-center lg:justify-end">
+                <div className="relative">
+                  <div className="w-80 h-96 bg-gradient-to-br from-purple-100 to-purple-200 rounded-3xl flex items-center justify-center shadow-2xl hover:scale-105 transition-all duration-300">
+                    <div className="text-center text-purple-700">
+                      <Instagram className="w-16 h-16 mx-auto mb-4" />
+                      <p className="text-lg font-semibold">@bizbridgeglobal</p>
+                      <p className="text-sm mt-2">Captura de tela do perfil</p>
+                    </div>
+                  </div>
+                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full animate-pulse-slow"></div>
+                  <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-float"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why BBG Section */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 to-purple-100/20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-8">
+              Por que Escolher a <span className="text-gradient">BBG?</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
+              Somos mais que uma plataforma – somos seu parceiro estratégico no sucesso global
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {values.map((value, index) => (
+              <div
+                key={value.title}
+                className="gradient-border p-8 hover-lift group"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-gradient-to-r from-[#9C7BD9] to-[#5A3D8E] rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 animate-float">
+                    <value.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#5A3D8E] transition-colors duration-300">
+                      {value.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed font-medium text-lg">
+                      {value.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-20">
+            <Link to={createPageUrl("About")}>
+              <Button variant="outline" size="lg" className="border-2 border-[#5A3D8E] text-[#5A3D8E] hover:bg-[#5A3D8E] hover:text-white px-12 py-6 text-xl font-bold transition-all duration-300 hover:scale-105 rounded-2xl">
+                Saiba Mais Sobre Nós
+                <ArrowRight className="ml-3 w-6 h-6" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 relative">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-gradient-to-br from-white/95 to-purple-50/80 backdrop-blur-xl border-2 border-purple-200/50 rounded-3xl p-16 hover-lift">
+            <Sparkles className="w-20 h-20 text-[#9C7BD9] mx-auto mb-8 animate-float" />
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
+              Pronto para Se Tornar <span className="text-gradient">Global?</span>
+            </h2>
+            <p className="text-xl text-gray-600 mb-12 leading-relaxed font-medium max-w-3xl mx-auto">
+              Junte-se a milhares de estudantes que já descobriram oportunidades transformadoras através da BBG
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link to={createPageUrl("Opportunities")}>
+                <Button size="lg" className="bg-gradient-to-r from-[#5A3D8E] to-[#9C7BD9] text-white font-bold px-12 py-6 text-xl hover:from-[#4a3278] hover:to-[#896ac4] shadow-2xl hover:shadow-[#5A3D8E]/30 transition-all duration-300 hover:scale-105 rounded-2xl">
+                  Comece a Explorar Agora
+                  <ArrowRight className="ml-3 w-6 h-6" />
+                </Button>
+              </Link>
+              <Link to={createPageUrl("Contact")}>
+                <Button variant="outline" size="lg" className="border-2 border-purple-300 text-purple-700 hover:bg-purple-50 px-12 py-6 text-xl font-semibold rounded-2xl hover:scale-105 transition-all duration-300">
+                  Entre em Contato
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
