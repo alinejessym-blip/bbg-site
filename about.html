@@ -1,0 +1,263 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { createPageUrl } from "@/utils";
+import { 
+  Globe, 
+  Target, 
+  Heart, 
+  Users, 
+  Award,
+  ArrowRight,
+  CheckCircle,
+  Zap,
+  Shield,
+  Sparkles
+} from "lucide-react";
+
+const mission = {
+  icon: Target,
+  title: "Nossa Missão",
+  description: "Democratizar o acesso a oportunidades globais conectando estudantes ambiciosos e jovens profissionais com experiências internacionais transformadoras. Acreditamos que o talento está em todo lugar, mas as oportunidades nem sempre.",
+  color: "from-blue-500 to-blue-600"
+};
+
+const vision = {
+  icon: Globe,
+  title: "Nossa Visão", 
+  description: "Um mundo onde todo estudante, independentemente de sua origem ou localização, tenha acesso igual a oportunidades internacionais que podem transformar seu futuro e expandir seus horizontes.",
+  color: "from-purple-500 to-purple-600"
+};
+
+const values = [
+  {
+    icon: Shield,
+    title: "Confiança & Transparência",
+    description: "Cada oportunidade é verificada e validada por nossa equipe para garantir autenticidade e qualidade."
+  },
+  {
+    icon: Heart,
+    title: "Acesso Inclusivo",
+    description: "Estamos comprometidos em tornar oportunidades globais acessíveis a estudantes de todas as origens."
+  },
+  {
+    icon: Zap,
+    title: "Inovação",
+    description: "Inovamos continuamente para melhorar como os estudantes descobrem e se candidatam a oportunidades internacionais."
+  },
+  {
+    icon: Users,
+    title: "Comunidade em Primeiro",
+    description: "Nossa plataforma é construída pela e para a comunidade global de estudantes."
+  }
+];
+
+const stats = [
+  { number: "10.000+", label: "Estudantes Conectados", icon: Users },
+  { number: "1.500+", label: "Oportunidades Globais", icon: Globe },
+  { number: "50+", label: "Países Cobertos", icon: Award },
+  { number: "95%", label: "Taxa de Sucesso", icon: CheckCircle }
+];
+
+const team = [
+  {
+    name: "Alex Chen",
+    role: "Fundador & CEO",
+    description: "Ex-bolsista que se tornou empreendedor, apaixonado por democratizar a educação global.",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    name: "Sarah Johnson",
+    role: "Diretora de Parcerias",
+    description: "Construindo relacionamentos com organizações pelo mundo para trazer as melhores oportunidades.",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b789?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    name: "Marcus Rodriguez",
+    role: "Desenvolvedor Principal",
+    description: "Criando experiências digitais fluidas que conectam estudantes aos seus sonhos.",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+  }
+];
+
+export default function AboutPage() {
+  return (
+    <div className="min-h-screen py-12 purple-rays">
+      {/* Hero Section */}
+      <section className="py-16 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-8 text-shadow-light">
+            Sobre a <span className="text-gradient">BBG</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
+            Estamos em uma missão para conectar o gap entre estudantes ambiciosos 
+            e oportunidades globais transformadoras.
+          </p>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {[mission, vision].map((item, index) => (
+              <Card 
+                key={item.title}
+                className="group bg-white/85 backdrop-blur-md border-purple-200/40 hover:bg-white/95 transition-all duration-500 hover-lift"
+              >
+                <CardContent className="p-8">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${item.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <item.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#5A3D8E] transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-16 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-100/60 to-purple-50/40" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Nosso Impacto
+            </h2>
+            <p className="text-xl text-gray-700">
+              Números que contam nossa história de conexão global
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={stat.label} className="text-center group">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#9C7BD9] to-[#5A3D8E] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <stat.icon className="w-8 h-8 text-white" />
+                </div>
+                <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 group-hover:text-[#5A3D8E] transition-colors duration-300">
+                  {stat.number}
+                </div>
+                <div className="text-gray-600 font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Nossos Valores
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Os princípios que guiam tudo que fazemos
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {values.map((value, index) => (
+              <Card 
+                key={value.title}
+                className="group bg-white/85 backdrop-blur-md border-purple-200/40 hover:bg-white/95 transition-all duration-500"
+              >
+                <CardContent className="p-8 flex items-start gap-6">
+                  <div className="w-12 h-12 bg-gradient-to-r from-[#9C7BD9] to-[#5A3D8E] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <value.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5A3D8E] transition-colors duration-300">
+                      {value.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {value.description}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="py-16 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-50/30 to-purple-100/20" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Conheça Nossa Equipe
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Os indivíduos apaixonados por trás da BBG
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.map((member, index) => (
+              <Card 
+                key={member.name}
+                className="group bg-white/85 backdrop-blur-md border-purple-200/40 hover:bg-white/95 transition-all duration-500 hover-lift"
+              >
+                <CardContent className="p-8 text-center">
+                  <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 ring-4 ring-[#9C7BD9]/20 group-hover:ring-[#9C7BD9]/50 transition-all duration-300">
+                    <img 
+                      src={member.avatar} 
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#5A3D8E] transition-colors duration-300">
+                    {member.name}
+                  </h3>
+                  <p className="text-[#9C7BD9] font-medium mb-4">
+                    {member.role}
+                  </p>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {member.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-gradient-to-br from-white/90 to-purple-50/80 backdrop-blur-md border border-purple-200/40 rounded-3xl p-12">
+            <Sparkles className="w-16 h-16 text-[#9C7BD9] mx-auto mb-6" />
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Pronto para Começar Sua Jornada?
+            </h2>
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              Junte-se a milhares de estudantes que já descobriram seu caminho para o sucesso global
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to={createPageUrl("Opportunities")}>
+                <Button size="lg" className="bg-gradient-to-r from-[#9C7BD9] to-[#5A3D8E] text-white font-bold px-12 py-4 text-lg hover:from-[#896ac4] hover:to-[#4a3278] shadow-2xl hover:shadow-[#9C7BD9]/25 transition-all duration-300 hover:scale-105">
+                  Explorar Oportunidades
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+              <Link to={createPageUrl("Contact")}>
+                <Button variant="outline" size="lg" className="border-purple-300 text-purple-700 hover:bg-purple-50 px-12 py-4 text-lg backdrop-blur-sm">
+                  Entre em Contato
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
